@@ -1,10 +1,10 @@
-package rot13service.controllers;
+package base.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rot13service.services.Rot13service;
+import base.services.Rot13service;
 
 @RestController
 @AllArgsConstructor

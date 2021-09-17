@@ -1,4 +1,4 @@
-package rot13service.services;
+package base.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
