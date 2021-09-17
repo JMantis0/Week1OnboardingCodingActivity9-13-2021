@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 public class Dec2OctService implements IDec2OctService {
     @Override
     public String convert2octal(String decString) {
-        return Integer.toOctalString(Integer.parseInt(decString));
+        try {
+            return Integer.toOctalString(Integer.parseInt(decString));
+        } catch (NumberFormatException e) {
+            return "Invalid Input.  Enter a number";
+        } catch(Exception e) {
+            return "Error: " + e;
+        }
     }
 }

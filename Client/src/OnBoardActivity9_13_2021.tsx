@@ -19,15 +19,27 @@ const OnBoardActivity9_13_2021 = () => {
 
   const handleRot13Request = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    console.log(`Sending GET request on route http://localhost:8080/rot13/decode?message=${state.input}`);
     axios
-      .get(`http://localhost:8080/rot13/decode?message=${state.input}`)
-      .then((response) => {
-        console.log(response);
-        const value = "Rot13 result: " + response.data;
-        dispatch(setOutput({ value }));
-      })
-      .catch((err) => console.log("There was an error: " + err));
+    .get(`http://localhost:8080/rot13/decode?message=${state.input}`)
+    .then((response) => {
+      console.log("Response from server: ", response);
+      const value = "Rot13 result: " + response.data;
+      dispatch(setOutput({ value }));
+    })
+    .catch((err) => console.log("There was an error: " + err));
   };
+  
+  const handleDec2OctRequest = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log(`Sending GET request on route http://localhost:8080/dec2oct/convert?decString=${state.input}`);
+    axios.get(`http://localhost:8080/dec2oct/convert?decString=${state.input}`)
+    .then(response => {
+      console.log("Response from server: ", response);
+      const value = "Dec2Oct result: " + response.data;
+      dispatch(setOutput({ value }));
+    })
+  }
 
   return (
     <React.Fragment>
@@ -38,6 +50,7 @@ const OnBoardActivity9_13_2021 = () => {
           <input onChange={handleChange}></input>
           <br></br>
           <button onClick={handleRot13Request}>Java: Rot13</button>
+          <button onClick={handleDec2OctRequest}>Java: Decimal2Octal</button>
           <br></br>
           <button onClick={() => {}}>JavaScript: Decimal to Hex</button>
           <br></br>
